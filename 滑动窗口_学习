@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int sum=0;//子数组加和
+        int result=INT32_MAX;
+        int length;//子数组长度
+        int i=0,j;
+        for(j=i;j<nums.size();j++)
+        {
+            sum+=nums[j];//这以上控制j++滑动窗口后端
+            while(sum>=target)//这个while控制i++滑动窗口前端
+            {
+                length=j-i+1;
+                result=result<length?result:length;
+                sum-=nums[i++];//NOTOCE HERE:POINT!自己写的时候就这句不会了
+            }
+        }
+        return result==INT32_MAX?0:result;//如果等于INT32_MAX那证明没有，所以=0
+
+    }
+};
