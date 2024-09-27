@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int slowIndex=0;//快慢指针法
+        for(int fastIndex=0;fastIndex<(nums.size());fastIndex++)
+        {
+            if(nums[fastIndex]!=val)//等于就不赋值，相当于掠过
+            {
+                nums[slowIndex++]=nums[fastIndex];
+            }
+        }
+        return slowIndex;
+
+    }
+};
