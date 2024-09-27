@@ -1,0 +1,25 @@
+class Solution {//由于有负数所以有序数组平方后不能直接按顺序得到有序平方数组，所以设置双指针法
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> result(nums.size(),0);
+        int k=nums.size()-1;
+        int i=0;
+        int j=k;
+        for(;i<=j;)
+        {
+            if(nums[i]*nums[i]<nums[j]*nums[j])
+            {
+                result[k]=nums[j]*nums[j];
+                j--;
+                k--;
+            }
+            else{
+                result[k]=nums[i]*nums[i];
+                i++;
+                k--;
+            }
+        }
+        return result;
+
+    }
+};
